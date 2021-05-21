@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "time_table", "time_table\time_table.csproj", "{0B82AFB5-F83C-40B6-9DBD-770BE22C8D01}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TimeTable(TMS)", "TimeTable(TMS)\TimeTable(TMS).vdproj", "{746329A2-18E5-4000-9E36-067E29B95576}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B82AFB5-F83C-40B6-9DBD-770BE22C8D01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B82AFB5-F83C-40B6-9DBD-770BE22C8D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B82AFB5-F83C-40B6-9DBD-770BE22C8D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B82AFB5-F83C-40B6-9DBD-770BE22C8D01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{746329A2-18E5-4000-9E36-067E29B95576}.Debug|Any CPU.ActiveCfg = Debug
+		{746329A2-18E5-4000-9E36-067E29B95576}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1F36523B-727B-44B4-B834-F5C4CDC5C654}
+	EndGlobalSection
+EndGlobal

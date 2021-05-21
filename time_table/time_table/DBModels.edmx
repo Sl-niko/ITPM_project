@@ -1,0 +1,873 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EFDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Academic1">
+          <Key>
+            <PropertyRef Name="Studid" />
+          </Key>
+          <Property Name="Studid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AcademicYrSemester" Type="varchar" MaxLength="50" />
+          <Property Name="Program1" Type="varchar" MaxLength="50" />
+          <Property Name="GroupNumber" Type="varchar" MaxLength="50" />
+          <Property Name="GroupId11" Type="varchar" MaxLength="50" />
+          <Property Name="SubGroupNo11" Type="varchar" MaxLength="50" />
+          <Property Name="SubGroupId11" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="add_time_slot">
+          <Key>
+            <PropertyRef Name="Lec_id" />
+          </Key>
+          <Property Name="Lec_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Batch_id" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="date" />
+          <Property Name="time_slot" Type="varchar" MaxLength="50" />
+          <Property Name="start_time_hrs" Type="varchar" MaxLength="50" />
+          <Property Name="end_time_hrs" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AddLocation11">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SessionID" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="varchar" MaxLength="50" />
+          <Property Name="StartTime" Type="varchar" MaxLength="50" />
+          <Property Name="EndTime" Type="varchar" MaxLength="50" />
+          <Property Name="RoomID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AddTag11">
+          <Key>
+            <PropertyRef Name="TagID" />
+          </Key>
+          <Property Name="TagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TagName" Type="varchar" MaxLength="50" />
+          <Property Name="TagCode" Type="varchar" MaxLength="50" />
+          <Property Name="RelatedTag" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="BuildingID" />
+          </Key>
+          <Property Name="BuildingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuildingName" Type="varchar" MaxLength="50" />
+          <Property Name="Num_of_Floors" Type="varchar" MaxLength="50" />
+          <Property Name="Num_of_Lectu" Type="varchar" MaxLength="50" />
+          <Property Name="Num_of_lab" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="consecuTable">
+          <Key>
+            <PropertyRef Name="cosecuID" />
+          </Key>
+          <Property Name="cosecuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SessionId" Type="varchar" MaxLength="50" />
+          <Property Name="Lecture1" Type="varchar" MaxLength="50" />
+          <Property Name="Lecture2" Type="varchar" MaxLength="50" />
+          <Property Name="Subject" Type="varchar" MaxLength="50" />
+          <Property Name="SubjectCode" Type="varchar" MaxLength="50" />
+          <Property Name="Tag" Type="varchar" MaxLength="50" />
+          <Property Name="GroupId" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Lecture">
+          <Key>
+            <PropertyRef Name="LecID" />
+          </Key>
+          <Property Name="LecID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LectureName" Type="varchar" MaxLength="50" />
+          <Property Name="EmpID" Type="varchar" MaxLength="50" />
+          <Property Name="Faculty" Type="varchar" MaxLength="50" />
+          <Property Name="Department" Type="varchar" MaxLength="50" />
+          <Property Name="Center" Type="varchar" MaxLength="50" />
+          <Property Name="Building" Type="varchar" MaxLength="50" />
+          <Property Name="Level" Type="varchar" MaxLength="50" />
+          <Property Name="Rank" Type="varchar" MaxLength="50" />
+          <Property Name="Day" Type="varchar" MaxLength="50" />
+          <Property Name="Time" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="lecture_tbl">
+          <Key>
+            <PropertyRef Name="lectID" />
+          </Key>
+          <Property Name="lectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lectu_type" Type="varchar" MaxLength="50" />
+          <Property Name="lect_name" Type="varchar" MaxLength="50" />
+          <Property Name="subject" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NonOverlapTable">
+          <Key>
+            <PropertyRef Name="nonOverId" />
+          </Key>
+          <Property Name="nonOverId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SessionId" Type="varchar" MaxLength="50" />
+          <Property Name="Lecture1" Type="varchar" MaxLength="50" />
+          <Property Name="Lecture2" Type="varchar" MaxLength="50" />
+          <Property Name="Subject" Type="varchar" MaxLength="50" />
+          <Property Name="SubjectCode" Type="varchar" MaxLength="50" />
+          <Property Name="Tag" Type="varchar" MaxLength="50" />
+          <Property Name="GroupId" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NotAvTime">
+          <Key>
+            <PropertyRef Name="SessionID" />
+          </Key>
+          <Property Name="SessionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Selected_Lecturer" Type="varchar" MaxLength="50" />
+          <Property Name="Selected_group" Type="varchar" MaxLength="50" />
+          <Property Name="Selected_subgroup" Type="varchar" MaxLength="50" />
+          <Property Name="Selected_sessionId" Type="varchar" MaxLength="50" />
+          <Property Name="Time" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="parellelTable">
+          <Key>
+            <PropertyRef Name="paraId" />
+          </Key>
+          <Property Name="paraId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SessionId" Type="varchar" MaxLength="50" />
+          <Property Name="Lecture1" Type="varchar" MaxLength="50" />
+          <Property Name="Lecture2" Type="varchar" MaxLength="50" />
+          <Property Name="Subject" Type="varchar" MaxLength="50" />
+          <Property Name="SubjectCode" Type="varchar" MaxLength="50" />
+          <Property Name="Tag" Type="varchar" MaxLength="50" />
+          <Property Name="GroupId" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RoomFConsecSessi">
+          <Key>
+            <PropertyRef Name="RFseId" />
+          </Key>
+          <Property Name="RFseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Session1" Type="varchar" MaxLength="50" />
+          <Property Name="Session2" Type="varchar" MaxLength="50" />
+          <Property Name="RoomName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RoomForGrSub">
+          <Key>
+            <PropertyRef Name="RsubGID" />
+          </Key>
+          <Property Name="RsubGID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stdG" Type="varchar" MaxLength="50" />
+          <Property Name="stdsubG" Type="varchar" MaxLength="50" />
+          <Property Name="roomNam" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RoomForLrctu">
+          <Key>
+            <PropertyRef Name="RFLID" />
+          </Key>
+          <Property Name="RFLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lecturName" Type="varchar" MaxLength="50" />
+          <Property Name="RoomName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RoomForSes">
+          <Key>
+            <PropertyRef Name="RRsID" />
+          </Key>
+          <Property Name="RRsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sesstionID" Type="varchar" MaxLength="50" />
+          <Property Name="RoomName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RoomForTag">
+          <Key>
+            <PropertyRef Name="RRTID" />
+          </Key>
+          <Property Name="RRTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tagName" Type="varchar" MaxLength="50" />
+          <Property Name="RoomName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Rooms">
+          <Key>
+            <PropertyRef Name="RoomID" />
+          </Key>
+          <Property Name="RoomID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuildingName" Type="varchar" MaxLength="50" />
+          <Property Name="RoomName" Type="varchar" MaxLength="50" />
+          <Property Name="RoomType" Type="varchar" MaxLength="50" />
+          <Property Name="Capacity" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SessionN">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Lecture1" Type="varchar" MaxLength="50" />
+          <Property Name="Lecture2" Type="varchar" MaxLength="50" />
+          <Property Name="Subject" Type="varchar" MaxLength="50" />
+          <Property Name="SubjectCode" Type="varchar" MaxLength="50" />
+          <Property Name="Tag" Type="varchar" MaxLength="50" />
+          <Property Name="GroupId" Type="varchar" MaxLength="50" />
+          <Property Name="NoOfStudents" Type="varchar" MaxLength="50" />
+          <Property Name="Duraction" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="SID" />
+          </Key>
+          <Property Name="SID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sname" Type="nchar" MaxLength="10" />
+          <Property Name="year" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="SubForRoom">
+          <Key>
+            <PropertyRef Name="Ssub" />
+          </Key>
+          <Property Name="Ssub" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subR" Type="nchar" MaxLength="10" />
+          <Property Name="roomR" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="subject">
+          <Key>
+            <PropertyRef Name="SID" />
+          </Key>
+          <Property Name="SID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sname" Type="varchar" MaxLength="50" />
+          <Property Name="year" Type="int" />
+        </EntityType>
+        <EntityType Name="Subject1">
+          <Key>
+            <PropertyRef Name="SID" />
+          </Key>
+          <Property Name="SID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Year" Type="varchar" MaxLength="50" />
+          <Property Name="Semester" Type="varchar" MaxLength="50" />
+          <Property Name="Subject_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Subject_Code" Type="varchar" MaxLength="50" />
+          <Property Name="Lecture_Hours" Type="varchar" MaxLength="50" />
+          <Property Name="Tute_Hours" Type="varchar" MaxLength="50" />
+          <Property Name="Lab_Hours" Type="varchar" MaxLength="50" />
+          <Property Name="Evaluation_Hours" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="working_Day1">
+          <Key>
+            <PropertyRef Name="weekID" />
+          </Key>
+          <Property Name="weekID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MondayH" Type="varchar" MaxLength="50" />
+          <Property Name="MondayM" Type="varchar" MaxLength="50" />
+          <Property Name="tusedayH" Type="varchar" MaxLength="50" />
+          <Property Name="tusedayM" Type="varchar" MaxLength="50" />
+          <Property Name="wednesdayH" Type="varchar" MaxLength="50" />
+          <Property Name="wednesdayM" Type="varchar" MaxLength="50" />
+          <Property Name="thursdayH" Type="varchar" MaxLength="50" />
+          <Property Name="thursdayM" Type="varchar" MaxLength="50" />
+          <Property Name="fridayH" Type="varchar" MaxLength="50" />
+          <Property Name="fridayM" Type="varchar" MaxLength="50" />
+          <Property Name="saturdayH" Type="varchar" MaxLength="50" />
+          <Property Name="saturdayM" Type="varchar" MaxLength="50" />
+          <Property Name="sundayH" Type="varchar" MaxLength="50" />
+          <Property Name="sundayM" Type="varchar" MaxLength="50" />
+          <Property Name="num_of_working_days" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="EFDBModelStoreContainer">
+          <EntitySet Name="Academic1" EntityType="Self.Academic1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="add_time_slot" EntityType="Self.add_time_slot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AddLocation11" EntityType="Self.AddLocation11" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AddTag11" EntityType="Self.AddTag11" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Building" EntityType="Self.Building" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="consecuTable" EntityType="Self.consecuTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lecture" EntityType="Self.Lecture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lecture_tbl" EntityType="Self.lecture_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NonOverlapTable" EntityType="Self.NonOverlapTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotAvTime" EntityType="Self.NotAvTime" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="parellelTable" EntityType="Self.parellelTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomFConsecSessi" EntityType="Self.RoomFConsecSessi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomForGrSub" EntityType="Self.RoomForGrSub" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomForLrctu" EntityType="Self.RoomForLrctu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomForSes" EntityType="Self.RoomForSes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomForTag" EntityType="Self.RoomForTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SessionN" EntityType="Self.SessionN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubForRoom" EntityType="Self.SubForRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="subject" EntityType="Self.subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subject1" EntityType="Self.Subject1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="working_Day1" EntityType="Self.working_Day1" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EFDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="BuildingID" />
+          </Key>
+          <Property Name="BuildingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuildingName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Num_of_Floors" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Num_of_Lectu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Num_of_lab" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="lecture_tbl">
+          <Key>
+            <PropertyRef Name="lectID" />
+          </Key>
+          <Property Name="lectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lectu_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lect_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="RoomID" />
+          </Key>
+          <Property Name="RoomID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuildingName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoomName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Capacity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="SID" />
+          </Key>
+          <Property Name="SID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sname" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="year" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="subject">
+          <Key>
+            <PropertyRef Name="SID" />
+          </Key>
+          <Property Name="SID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="year" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="EFDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Buildings" EntityType="Self.Building" />
+          <EntitySet Name="lecture_tbl" EntityType="Self.lecture_tbl" />
+          <EntitySet Name="Rooms" EntityType="Self.Room" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="subjects" EntityType="Self.subject" />
+          <EntitySet Name="Academic1" EntityType="EFDBModel.Academic1" />
+          <EntitySet Name="AddTag11" EntityType="EFDBModel.AddTag11" />
+          <EntitySet Name="Lectures" EntityType="EFDBModel.Lecture" />
+          <EntitySet Name="Subject1" EntityType="EFDBModel.Subject1" />
+          <EntitySet Name="working_Day1" EntityType="EFDBModel.working_Day1" />
+          <EntitySet Name="add_time_slot" EntityType="EFDBModel.add_time_slot" />
+          <EntitySet Name="SubForRooms" EntityType="EFDBModel.SubForRoom" />
+          <EntitySet Name="RoomForGrSubs" EntityType="EFDBModel.RoomForGrSub" />
+          <EntitySet Name="RoomForLrctus" EntityType="EFDBModel.RoomForLrctu" />
+          <EntitySet Name="RoomForTags" EntityType="EFDBModel.RoomForTag" />
+          <EntitySet Name="SessionNs" EntityType="EFDBModel.SessionN" />
+          <EntitySet Name="RoomForSes" EntityType="EFDBModel.RoomForS" />
+          <EntitySet Name="RoomFConsecSessis" EntityType="EFDBModel.RoomFConsecSessi" />
+          <EntitySet Name="consecuTables" EntityType="EFDBModel.consecuTable" />
+          <EntitySet Name="AddLocation11" EntityType="EFDBModel.AddLocation11" />
+          <EntitySet Name="parellelTables" EntityType="EFDBModel.parellelTable" />
+          <EntitySet Name="NonOverlapTables" EntityType="EFDBModel.NonOverlapTable" />
+          <EntitySet Name="NotAvTimes" EntityType="EFDBModel.NotAvTime" />
+        </EntityContainer>
+        <EntityType Name="Academic1">
+          <Key>
+            <PropertyRef Name="Studid" />
+          </Key>
+          <Property Name="Studid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AcademicYrSemester" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Program1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupId11" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubGroupNo11" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubGroupId11" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AddTag11">
+          <Key>
+            <PropertyRef Name="TagID" />
+          </Key>
+          <Property Name="TagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TagName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TagCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RelatedTag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Lecture">
+          <Key>
+            <PropertyRef Name="LecID" />
+          </Key>
+          <Property Name="LecID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LectureName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Faculty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Center" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Building" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Level" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Rank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Subject1">
+          <Key>
+            <PropertyRef Name="SID" />
+          </Key>
+          <Property Name="SID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Semester" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Subject_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Subject_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lecture_Hours" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tute_Hours" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lab_Hours" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Evaluation_Hours" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="working_Day1">
+          <Key>
+            <PropertyRef Name="weekID" />
+          </Key>
+          <Property Name="weekID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MondayH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MondayM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tusedayH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tusedayM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="wednesdayH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="wednesdayM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="thursdayH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="thursdayM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fridayH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fridayM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="saturdayH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="saturdayM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sundayH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sundayM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="num_of_working_days" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="add_time_slot">
+          <Key>
+            <PropertyRef Name="Lec_id" />
+          </Key>
+          <Property Name="Lec_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Batch_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="time_slot" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="start_time_hrs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="end_time_hrs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SubForRoom">
+          <Key>
+            <PropertyRef Name="Ssub" />
+          </Key>
+          <Property Name="Ssub" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subR" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="roomR" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RoomForGrSub">
+          <Key>
+            <PropertyRef Name="RsubGID" />
+          </Key>
+          <Property Name="RsubGID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stdG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="stdsubG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="roomNam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RoomForLrctu">
+          <Key>
+            <PropertyRef Name="RFLID" />
+          </Key>
+          <Property Name="RFLID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lecturName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoomName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RoomForTag">
+          <Key>
+            <PropertyRef Name="RRTID" />
+          </Key>
+          <Property Name="RRTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tagName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoomName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SessionN">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Lecture1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lecture2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NoOfStudents" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Duraction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RoomForS">
+          <Key>
+            <PropertyRef Name="RRsID" />
+          </Key>
+          <Property Name="RRsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sesstionID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoomName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RoomFConsecSessi">
+          <Key>
+            <PropertyRef Name="RFseId" />
+          </Key>
+          <Property Name="RFseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Session1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Session2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoomName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="consecuTable">
+          <Key>
+            <PropertyRef Name="cosecuID" />
+          </Key>
+          <Property Name="cosecuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SessionId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lecture1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lecture2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AddLocation11">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SessionID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StartTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EndTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoomID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="parellelTable">
+          <Key>
+            <PropertyRef Name="paraId" />
+          </Key>
+          <Property Name="paraId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SessionId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lecture1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lecture2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="NonOverlapTable">
+          <Key>
+            <PropertyRef Name="nonOverId" />
+          </Key>
+          <Property Name="nonOverId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SessionId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lecture1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lecture2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="NotAvTime">
+          <Key>
+            <PropertyRef Name="SessionID" />
+          </Key>
+          <Property Name="SessionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Selected_Lecturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Selected_group" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Selected_subgroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Selected_sessionId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EFDBModelStoreContainer" CdmEntityContainer="EFDBEntities1">
+          <EntitySetMapping Name="Buildings">
+            <EntityTypeMapping TypeName="EFDBModel.Building">
+              <MappingFragment StoreEntitySet="Building">
+                <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
+                <ScalarProperty Name="BuildingName" ColumnName="BuildingName" />
+                <ScalarProperty Name="Num_of_Floors" ColumnName="Num_of_Floors" />
+                <ScalarProperty Name="Num_of_Lectu" ColumnName="Num_of_Lectu" />
+                <ScalarProperty Name="Num_of_lab" ColumnName="Num_of_lab" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lecture_tbl">
+            <EntityTypeMapping TypeName="EFDBModel.lecture_tbl">
+              <MappingFragment StoreEntitySet="lecture_tbl">
+                <ScalarProperty Name="lectID" ColumnName="lectID" />
+                <ScalarProperty Name="lectu_type" ColumnName="lectu_type" />
+                <ScalarProperty Name="lect_name" ColumnName="lect_name" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="EFDBModel.Room">
+              <MappingFragment StoreEntitySet="Rooms">
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="BuildingName" ColumnName="BuildingName" />
+                <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+                <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="EFDBModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="Sname" ColumnName="Sname" />
+                <ScalarProperty Name="year" ColumnName="year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subjects">
+            <EntityTypeMapping TypeName="EFDBModel.subject">
+              <MappingFragment StoreEntitySet="subject">
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="Sname" ColumnName="Sname" />
+                <ScalarProperty Name="year" ColumnName="year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Academic1">
+            <EntityTypeMapping TypeName="EFDBModel.Academic1">
+              <MappingFragment StoreEntitySet="Academic1">
+                <ScalarProperty Name="SubGroupId11" ColumnName="SubGroupId11" />
+                <ScalarProperty Name="SubGroupNo11" ColumnName="SubGroupNo11" />
+                <ScalarProperty Name="GroupId11" ColumnName="GroupId11" />
+                <ScalarProperty Name="GroupNumber" ColumnName="GroupNumber" />
+                <ScalarProperty Name="Program1" ColumnName="Program1" />
+                <ScalarProperty Name="AcademicYrSemester" ColumnName="AcademicYrSemester" />
+                <ScalarProperty Name="Studid" ColumnName="Studid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddTag11">
+            <EntityTypeMapping TypeName="EFDBModel.AddTag11">
+              <MappingFragment StoreEntitySet="AddTag11">
+                <ScalarProperty Name="RelatedTag" ColumnName="RelatedTag" />
+                <ScalarProperty Name="TagCode" ColumnName="TagCode" />
+                <ScalarProperty Name="TagName" ColumnName="TagName" />
+                <ScalarProperty Name="TagID" ColumnName="TagID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lectures">
+            <EntityTypeMapping TypeName="EFDBModel.Lecture">
+              <MappingFragment StoreEntitySet="Lecture">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="Center" ColumnName="Center" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="LectureName" ColumnName="LectureName" />
+                <ScalarProperty Name="LecID" ColumnName="LecID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subject1">
+            <EntityTypeMapping TypeName="EFDBModel.Subject1">
+              <MappingFragment StoreEntitySet="Subject1">
+                <ScalarProperty Name="Evaluation_Hours" ColumnName="Evaluation_Hours" />
+                <ScalarProperty Name="Lab_Hours" ColumnName="Lab_Hours" />
+                <ScalarProperty Name="Tute_Hours" ColumnName="Tute_Hours" />
+                <ScalarProperty Name="Lecture_Hours" ColumnName="Lecture_Hours" />
+                <ScalarProperty Name="Subject_Code" ColumnName="Subject_Code" />
+                <ScalarProperty Name="Subject_Name" ColumnName="Subject_Name" />
+                <ScalarProperty Name="Semester" ColumnName="Semester" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="working_Day1">
+            <EntityTypeMapping TypeName="EFDBModel.working_Day1">
+              <MappingFragment StoreEntitySet="working_Day1">
+                <ScalarProperty Name="num_of_working_days" ColumnName="num_of_working_days" />
+                <ScalarProperty Name="sundayM" ColumnName="sundayM" />
+                <ScalarProperty Name="sundayH" ColumnName="sundayH" />
+                <ScalarProperty Name="saturdayM" ColumnName="saturdayM" />
+                <ScalarProperty Name="saturdayH" ColumnName="saturdayH" />
+                <ScalarProperty Name="fridayM" ColumnName="fridayM" />
+                <ScalarProperty Name="fridayH" ColumnName="fridayH" />
+                <ScalarProperty Name="thursdayM" ColumnName="thursdayM" />
+                <ScalarProperty Name="thursdayH" ColumnName="thursdayH" />
+                <ScalarProperty Name="wednesdayM" ColumnName="wednesdayM" />
+                <ScalarProperty Name="wednesdayH" ColumnName="wednesdayH" />
+                <ScalarProperty Name="tusedayM" ColumnName="tusedayM" />
+                <ScalarProperty Name="tusedayH" ColumnName="tusedayH" />
+                <ScalarProperty Name="MondayM" ColumnName="MondayM" />
+                <ScalarProperty Name="MondayH" ColumnName="MondayH" />
+                <ScalarProperty Name="weekID" ColumnName="weekID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="add_time_slot">
+            <EntityTypeMapping TypeName="EFDBModel.add_time_slot">
+              <MappingFragment StoreEntitySet="add_time_slot">
+                <ScalarProperty Name="end_time_hrs" ColumnName="end_time_hrs" />
+                <ScalarProperty Name="start_time_hrs" ColumnName="start_time_hrs" />
+                <ScalarProperty Name="time_slot" ColumnName="time_slot" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="Batch_id" ColumnName="Batch_id" />
+                <ScalarProperty Name="Lec_id" ColumnName="Lec_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubForRooms">
+            <EntityTypeMapping TypeName="EFDBModel.SubForRoom">
+              <MappingFragment StoreEntitySet="SubForRoom">
+                <ScalarProperty Name="roomR" ColumnName="roomR" />
+                <ScalarProperty Name="subR" ColumnName="subR" />
+                <ScalarProperty Name="Ssub" ColumnName="Ssub" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomForGrSubs">
+            <EntityTypeMapping TypeName="EFDBModel.RoomForGrSub">
+              <MappingFragment StoreEntitySet="RoomForGrSub">
+                <ScalarProperty Name="roomNam" ColumnName="roomNam" />
+                <ScalarProperty Name="stdsubG" ColumnName="stdsubG" />
+                <ScalarProperty Name="stdG" ColumnName="stdG" />
+                <ScalarProperty Name="RsubGID" ColumnName="RsubGID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomForLrctus">
+            <EntityTypeMapping TypeName="EFDBModel.RoomForLrctu">
+              <MappingFragment StoreEntitySet="RoomForLrctu">
+                <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+                <ScalarProperty Name="lecturName" ColumnName="lecturName" />
+                <ScalarProperty Name="RFLID" ColumnName="RFLID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomForTags">
+            <EntityTypeMapping TypeName="EFDBModel.RoomForTag">
+              <MappingFragment StoreEntitySet="RoomForTag">
+                <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+                <ScalarProperty Name="tagName" ColumnName="tagName" />
+                <ScalarProperty Name="RRTID" ColumnName="RRTID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SessionNs">
+            <EntityTypeMapping TypeName="EFDBModel.SessionN">
+              <MappingFragment StoreEntitySet="SessionN">
+                <ScalarProperty Name="Duraction" ColumnName="Duraction" />
+                <ScalarProperty Name="NoOfStudents" ColumnName="NoOfStudents" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="SubjectCode" ColumnName="SubjectCode" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Lecture2" ColumnName="Lecture2" />
+                <ScalarProperty Name="Lecture1" ColumnName="Lecture1" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomForSes">
+            <EntityTypeMapping TypeName="EFDBModel.RoomForS">
+              <MappingFragment StoreEntitySet="RoomForSes">
+                <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+                <ScalarProperty Name="sesstionID" ColumnName="sesstionID" />
+                <ScalarProperty Name="RRsID" ColumnName="RRsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomFConsecSessis">
+            <EntityTypeMapping TypeName="EFDBModel.RoomFConsecSessi">
+              <MappingFragment StoreEntitySet="RoomFConsecSessi">
+                <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+                <ScalarProperty Name="Session2" ColumnName="Session2" />
+                <ScalarProperty Name="Session1" ColumnName="Session1" />
+                <ScalarProperty Name="RFseId" ColumnName="RFseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="consecuTables">
+            <EntityTypeMapping TypeName="EFDBModel.consecuTable">
+              <MappingFragment StoreEntitySet="consecuTable">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="SubjectCode" ColumnName="SubjectCode" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Lecture2" ColumnName="Lecture2" />
+                <ScalarProperty Name="Lecture1" ColumnName="Lecture1" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="cosecuID" ColumnName="cosecuID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddLocation11">
+            <EntityTypeMapping TypeName="EFDBModel.AddLocation11">
+              <MappingFragment StoreEntitySet="AddLocation11">
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parellelTables">
+            <EntityTypeMapping TypeName="EFDBModel.parellelTable">
+              <MappingFragment StoreEntitySet="parellelTable">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="SubjectCode" ColumnName="SubjectCode" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Lecture2" ColumnName="Lecture2" />
+                <ScalarProperty Name="Lecture1" ColumnName="Lecture1" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="paraId" ColumnName="paraId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NonOverlapTables">
+            <EntityTypeMapping TypeName="EFDBModel.NonOverlapTable">
+              <MappingFragment StoreEntitySet="NonOverlapTable">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="SubjectCode" ColumnName="SubjectCode" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Lecture2" ColumnName="Lecture2" />
+                <ScalarProperty Name="Lecture1" ColumnName="Lecture1" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="nonOverId" ColumnName="nonOverId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotAvTimes">
+            <EntityTypeMapping TypeName="EFDBModel.NotAvTime">
+              <MappingFragment StoreEntitySet="NotAvTime">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Selected_sessionId" ColumnName="Selected_sessionId" />
+                <ScalarProperty Name="Selected_subgroup" ColumnName="Selected_subgroup" />
+                <ScalarProperty Name="Selected_group" ColumnName="Selected_group" />
+                <ScalarProperty Name="Selected_Lecturer" ColumnName="Selected_Lecturer" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
